@@ -1,4 +1,4 @@
-package com.nbody.simulator.Controller;
+package com.nbody.simulator.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
