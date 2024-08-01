@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: core
+  config:
+    import: 'consul:'
+  cloud:
+    consul:
+      config:
+        enabled: true
+        prefix: config
+        format: YAML
