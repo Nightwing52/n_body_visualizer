@@ -9,3 +9,5 @@ spring:
         enabled: true
         prefix: config
         format: YAML
+server:
+  port: 8081
