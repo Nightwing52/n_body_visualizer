@@ -1,6 +1,8 @@
 spring:
   application:
     name: core
+  profiles:
+    active: ${environment}
   config:
     import: 'consul:'
   cloud:
