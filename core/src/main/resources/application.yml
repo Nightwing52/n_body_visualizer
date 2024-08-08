@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: core
+  profiles:
+    active: ${environment}
+  config:
+    import: 'consul:'
+  cloud:
+    consul:
+      config:
+        enabled: true
+        prefix: config
+        format: YAML
+server:
+  port: 8081

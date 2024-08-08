@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: simulator
+  config:
+    import: 'consul:'
+  cloud:
+    consul:
+      config:
+        enabled: true
+        prefix: config
+        format: YAML
+server:
+  port: 8082
