@@ -4,6 +4,7 @@ import com.nbody.simulator.dto.Frame;
 import com.nbody.simulator.dto.Particle;
 import com.nbody.simulator.dto.SimulationOutput;
 import com.nbody.simulator.dto.SimulationRequest;
+import com.nbody.simulator.validator.SimulationRequestValidator;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ public class SimulatorController {
     @PostMapping(value = "/v1/simulate")
     public ResponseEntity<SimulationOutput> simulate(@RequestBody SimulationRequest request) {
         // reflect input for now
+        SimulationRequestValidator.validateSimulationRequest(request);
         return ResponseEntity.ok(reflectInput(request));
     }
 

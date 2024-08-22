@@ -8,9 +8,9 @@ public class SimulationRequest {
     List<Float> vxList;
     List<Float> vyList;
     List<Float> mList;
-    Float T;
+    Float simulationTime;
     Integer numTimesteps;
-    Float G;
+    Float gravitationalConstant;
 
     public List<Float> getxList() {
         return xList;
@@ -52,12 +52,12 @@ public class SimulationRequest {
         this.mList = mList;
     }
 
-    public Float getT() {
-        return T;
+    public Float getSimulationTime() {
+        return simulationTime;
     }
 
-    public void setT(Float t) {
-        T = t;
+    public void setSimulationTime(Float simulationTime) {
+        this.simulationTime = simulationTime;
     }
 
     public Integer getNumTimesteps() {
@@ -68,12 +68,12 @@ public class SimulationRequest {
         this.numTimesteps = numTimesteps;
     }
 
-    public Float getG() {
-        return G;
+    public Float getGravitationalConstant() {
+        return gravitationalConstant;
     }
 
-    public void setG(Float g) {
-        G = g;
+    public void setGravitationalConstant(Float gravitationalConstant) {
+        this.gravitationalConstant = gravitationalConstant;
     }
 
     @Override
@@ -84,9 +84,9 @@ public class SimulationRequest {
                 ", vxList=" + vxList +
                 ", vyList=" + vyList +
                 ", mList=" + mList +
-                ", T=" + T +
+                ", simulationTime=" + simulationTime +
                 ", numTimesteps=" + numTimesteps +
-                ", G=" + G +
+                ", gravitationalConstant=" + gravitationalConstant +
                 '}';
     }
 }
