@@ -30,17 +30,19 @@ public class SimulatorController {
 
         // getting particles
         List<Particle> particleList = new ArrayList<>();
-        int N = request.getX().size();
+        int N = request.getxList().size();
         for(int i=0; i<N; i++) {
             Particle newParticle = new Particle();
-            newParticle.setM(request.getM().get(i));
-            newParticle.setX(request.getX().get(i));
-            newParticle.setY(request.getY().get(i));
-            newParticle.setVx(request.getVx().get(i));
-            newParticle.setVy(request.getVy().get(i));
+            newParticle.setM(request.getmList().get(i));
+            newParticle.setX(request.getxList().get(i));
+            newParticle.setY(request.getyList().get(i));
+            newParticle.setVx(request.getVxList().get(i));
+            newParticle.setVy(request.getVyList().get(i));
+            particleList.add(newParticle);
         }
 
         frame.setParticleList(particleList);
+        frameList.add(frame);
         simulationOutput.setFrameList(frameList);
 
         return simulationOutput;

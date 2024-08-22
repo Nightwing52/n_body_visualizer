@@ -3,65 +3,53 @@ package com.nbody.simulator.dto;
 import java.util.List;
 
 public class SimulationRequest {
-    List<Float> x;
-    List<Float> y;
-    List<Float> vx;
-    List<Float> vy;
-    List<Float> m;
+    List<Float> xList;
+    List<Float> yList;
+    List<Float> vxList;
+    List<Float> vyList;
+    List<Float> mList;
     Float T;
-    Integer M;
+    Integer numTimesteps;
     Float G;
 
-    public List<Float> getX() {
-        return x;
+    public List<Float> getxList() {
+        return xList;
     }
 
-    public void setX(List<Float> x) {
-        this.x = x;
+    public void setxList(List<Float> xList) {
+        this.xList = xList;
     }
 
-    public List<Float> getY() {
-        return y;
+    public List<Float> getyList() {
+        return yList;
     }
 
-    public void setY(List<Float> y) {
-        this.y = y;
+    public void setyList(List<Float> yList) {
+        this.yList = yList;
     }
 
-    public List<Float> getVx() {
-        return vx;
+    public List<Float> getVxList() {
+        return vxList;
     }
 
-    public void setVx(List<Float> vx) {
-        this.vx = vx;
+    public void setVxList(List<Float> vxList) {
+        this.vxList = vxList;
     }
 
-    public List<Float> getVy() {
-        return vy;
+    public List<Float> getVyList() {
+        return vyList;
     }
 
-    public void setVy(List<Float> vy) {
-        this.vy = vy;
+    public void setVyList(List<Float> vyList) {
+        this.vyList = vyList;
     }
 
-    public List<Float> getM() {
-        return m;
+    public List<Float> getmList() {
+        return mList;
     }
 
-    public void setM(Integer m) {
-        M = m;
-    }
-
-    public Float getG() {
-        return G;
-    }
-
-    public void setG(Float g) {
-        G = g;
-    }
-
-    public void setM(List<Float> m) {
-        this.m = m;
+    public void setmList(List<Float> mList) {
+        this.mList = mList;
     }
 
     public Float getT() {
@@ -72,16 +60,32 @@ public class SimulationRequest {
         T = t;
     }
 
+    public Integer getNumTimesteps() {
+        return numTimesteps;
+    }
+
+    public void setNumTimesteps(Integer numTimesteps) {
+        this.numTimesteps = numTimesteps;
+    }
+
+    public Float getG() {
+        return G;
+    }
+
+    public void setG(Float g) {
+        G = g;
+    }
+
     @Override
     public String toString() {
         return "SimulationRequest{" +
-                "x=" + x +
-                ", y=" + y +
-                ", vx=" + vx +
-                ", vy=" + vy +
-                ", m=" + m +
+                "xList=" + xList +
+                ", yList=" + yList +
+                ", vxList=" + vxList +
+                ", vyList=" + vyList +
+                ", mList=" + mList +
                 ", T=" + T +
-                ", M=" + M +
+                ", numTimesteps=" + numTimesteps +
                 ", G=" + G +
                 '}';
     }
