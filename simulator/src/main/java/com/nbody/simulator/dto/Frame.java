@@ -6,6 +6,11 @@ public class Frame {
     Integer frameNumber;
     List<Particle> particleList;
 
+    public Frame(Integer frameNumber, List<Particle> particleList) {
+        this.frameNumber = frameNumber;
+        this.particleList = particleList;
+    }
+
     public Integer getFrameNumber() {
         return frameNumber;
     }

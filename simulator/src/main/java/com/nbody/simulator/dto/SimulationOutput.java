@@ -5,6 +5,10 @@ import java.util.List;
 public class SimulationOutput {
     List<Frame> frameList;
 
+    public SimulationOutput(List<Frame> frameList) {
+        this.frameList = frameList;
+    }
+
     public List<Frame> getFrameList() {
         return frameList;
     }
