@@ -13,16 +13,20 @@ public class Vector2D {
         return x;
     }
 
-    public void setX(float x) {
-        this.x = x;
-    }
-
     public float getY() {
         return y;
     }
 
-    public void setY(float y) {
-        this.y = y;
+    public static Vector2D add(Vector2D vector1, Vector2D vector2) {
+        return new Vector2D(vector1.getX()+vector2.getX(), vector1.getY()+ vector2.getY());
+    }
+
+    public static Vector2D subtract(Vector2D vector1, Vector2D vector2) {
+        return new Vector2D(vector1.getX()-vector2.getX(), vector1.getY()-vector2.getY());
+    }
+
+    public float mag() {
+        return (float) Math.sqrt(Math.pow(this.x, 2)+Math.pow(this.y, 2));
     }
 
     @Override
