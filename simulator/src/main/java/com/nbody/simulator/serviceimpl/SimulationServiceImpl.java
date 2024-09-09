@@ -2,6 +2,8 @@ package com.nbody.simulator.serviceimpl;
 
 import com.nbody.simulator.dto.*;
 import com.nbody.simulator.service.SimulationService;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,7 +11,10 @@ import java.util.List;
 
 @Service
 public class SimulationServiceImpl implements SimulationService {
+    private static final Logger logger = LoggerFactory.getLogger(SimulationService.class);
+
     public SimulationOutput simulate(SimulationRequest request) {
+        logger.debug("In simulate: printing request {}", request);
         float h = request.getSimulationTime()/request.getNumTimesteps(); // timestep
         float G = request.getGravitationalConstant();
         List<Frame> frameList = new ArrayList<>();
@@ -35,6 +40,7 @@ public class SimulationServiceImpl implements SimulationService {
             particle.setM(request.getmList().get(i));
             particleList.add(particle);
         }
+        logger.debug("Particle list {}", particleList);
         return particleList;
     }
 
@@ -46,7 +52,7 @@ public class SimulationServiceImpl implements SimulationService {
         List<Vector2D> forceArray = calculateForce(particleList, G);
         List<Particle> nextState = new ArrayList<>();
         for(int i=0; i<particleList.size(); i++) { // update positions
-            Particle particle = new Particle();
+            Particle particle = particleList.get(i).copy();
             particle.setX(particle.getX() + particle.getVx()*h + 0.5F* forceArray.get(i).getX()*h_squared);
             particle.setY(particle.getY() + particle.getVy()*h + 0.5F* forceArray.get(i).getY()*h_squared);
             nextState.add(particle);
@@ -65,10 +71,14 @@ public class SimulationServiceImpl implements SimulationService {
     // get force for each particle with x and y component
     private List<Vector2D> calculateForce(List<Particle> particleList, float G) {
         List<Vector2D> forceArray = new ArrayList<>();
-        for(Particle particle1 : particleList) {
+        for(int i=0; i< particleList.size(); i++) {
+            Particle particle1 = particleList.get(i);
             Vector2D force = new Vector2D(0.0F, 0.0F);
             Vector2D position1 = new Vector2D(particle1.getX(), particle1.getY());
-            for(Particle particle2 : particleList) { // brute force for now
+            for(int j=0; j<particleList.size(); j++) { // brute force for now
+                if(i == j) // same particle
+                    continue;
+                Particle particle2 = particleList.get(j);
                 Vector2D position2 = new Vector2D(particle2.getX(), particle2.getY());
                 Vector2D r12 = Vector2D.subtract(position1, position2);
                 float mag = r12.mag();
@@ -78,6 +88,7 @@ public class SimulationServiceImpl implements SimulationService {
             }
             forceArray.add(force);
         }
+        logger.debug("Force array {}", forceArray);
         return forceArray;
     }
 

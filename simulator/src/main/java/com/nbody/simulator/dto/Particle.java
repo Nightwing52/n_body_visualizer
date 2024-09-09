@@ -47,6 +47,16 @@ public class Particle {
         this.m = m;
     }
 
+    public Particle copy() {
+        Particle particleCopy = new Particle();
+        particleCopy.setM(this.m);
+        particleCopy.setX(this.x);
+        particleCopy.setY(this.y);
+        particleCopy.setVx(this.vx);
+        particleCopy.setVy(this.vy);
+        return particleCopy;
+    }
+
     @Override
     public String toString() {
         return "Particle{" +
