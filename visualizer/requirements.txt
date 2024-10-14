@@ -2,3 +2,4 @@ Flask
 gunicorn
 matplotlib
 ffmpeg
+numpy
