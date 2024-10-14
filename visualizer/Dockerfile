@@ -9,6 +9,9 @@
 ARG PYTHON_VERSION=3.10.12
 FROM python:${PYTHON_VERSION}-slim as base
 
+# Install FFmpeg
+RUN apt-get update && apt-get install -y ffmpeg
+
 # Prevents Python from writing pyc files.
 ENV PYTHONDONTWRITEBYTECODE=1
 
@@ -40,6 +43,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 # Switch to the non-privileged user to run the application.
 USER appuser
+RUN umask 0022 
 
 # Copy the source code into the container.
 COPY . .
@@ -48,4 +52,4 @@ COPY . .
 EXPOSE 8000
 
 # Run the application.
-CMD gunicorn 'app:app' --bind=0.0.0.0:8000
+CMD gunicorn 'app:app' --bind=0.0.0.0:8000 --timeout 300
