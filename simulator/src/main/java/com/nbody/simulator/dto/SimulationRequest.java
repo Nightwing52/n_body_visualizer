@@ -12,19 +12,19 @@ public class SimulationRequest {
     Integer numTimesteps;
     Float gravitationalConstant;
 
-    public List<Float> getxList() {
+    public List<Float> getXList() {
         return xList;
     }
 
-    public void setxList(List<Float> xList) {
+    public void setXList(List<Float> xList) {
         this.xList = xList;
     }
 
-    public List<Float> getyList() {
+    public List<Float> getYList() {
         return yList;
     }
 
-    public void setyList(List<Float> yList) {
+    public void setYList(List<Float> yList) {
         this.yList = yList;
     }
 
@@ -44,11 +44,11 @@ public class SimulationRequest {
         this.vyList = vyList;
     }
 
-    public List<Float> getmList() {
+    public List<Float> getMList() {
         return mList;
     }
 
-    public void setmList(List<Float> mList) {
+    public void setMList(List<Float> mList) {
         this.mList = mList;
     }
 

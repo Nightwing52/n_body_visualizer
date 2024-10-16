@@ -31,13 +31,13 @@ public class SimulationServiceImpl implements SimulationService {
     // get initial state
     private List<Particle> getParticleList(SimulationRequest request) {
         List<Particle> particleList = new ArrayList<>();
-        for(int i=0; i<request.getxList().size(); i++) {
+        for(int i = 0; i<request.getXList().size(); i++) {
             Particle particle = new Particle();
-            particle.setX(request.getxList().get(i));
-            particle.setY(request.getyList().get(i));
+            particle.setX(request.getXList().get(i));
+            particle.setY(request.getYList().get(i));
             particle.setVx(request.getVxList().get(i));
             particle.setVy(request.getVyList().get(i));
-            particle.setM(request.getmList().get(i));
+            particle.setM(request.getMList().get(i));
             particleList.add(particle);
         }
         logger.debug("Particle list {}", particleList);
