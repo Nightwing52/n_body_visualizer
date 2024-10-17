@@ -1,0 +1,10 @@
+validation:
+  simulation:
+    negative:
+      mass: 'Particles must have positive mass.'
+      time: 'Time must be positive.'
+      gravitationalConstant: 'Gravitational constant must be positive.'
+    invalid:
+      coordinates: 'Particles are not in the unit square.'
+      timesteps: 'Number of timesteps must be positive.'
+      arrayLength: 'Not all arrays are the same length.'
