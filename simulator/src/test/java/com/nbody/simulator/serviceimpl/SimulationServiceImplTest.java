@@ -14,7 +14,6 @@ import org.springframework.test.context.TestPropertySource;
 import java.util.Arrays;
 
 @SpringBootTest
-@TestPropertySource("classpath:messages.properties")
 public class SimulationServiceImplTest {
 
     @Autowired
@@ -22,20 +21,23 @@ public class SimulationServiceImplTest {
 
     private SimulationRequest validRequest;
 
-    @Value("${simulation.negative.mass}")
-    private String negativeMassMessage;
+    @Value("${validation.simulation.negative.mass}")
+    private static String negativeMassMessage;
 
-    @Value("${simulation.invalid.coordinates}")
-    private String invalidCoordinatesMessage;
+    @Value("${validation.simulation.negative.time}")
+    private static String negativeTimeMessage;
 
-    @Value("${simulation.invalid.timesteps}")
-    private String invalidTimestepsMessage;
+    @Value("${validation.simulation.negative.gravitationalConstant}")
+    private static String negativeGravitationalConstantMessage;
 
-    @Value("${simulation.negative.simulation.time}")
-    private String negativeSimulationTimeMessage;
+    @Value("${validation.simulation.invalid.coordinates}")
+    private static String invalidCoordinatesMessage;
 
-    @Value("${simulation.array.length}")
-    private String arrayLengthMessage;
+    @Value("${validation.simulation.invalid.timesteps}")
+    private static String invalidTimestepsMessage;
+
+    @Value("${validation.simulation.invalid.arrayLength}")
+    private static String invalidArrayLengthMessage;
 
     @BeforeEach
     public void setup() {
@@ -106,7 +108,7 @@ public class SimulationServiceImplTest {
         Exception exception = assertThrows(SimulationException.class, () -> {
             simulationService.simulate(validRequest);
         });
-        assertEquals(negativeSimulationTimeMessage, exception.getMessage());
+        assertEquals(negativeTimeMessage, exception.getMessage());
     }
 
     // Test case: invalid request (arrays of different lengths)
@@ -117,7 +119,7 @@ public class SimulationServiceImplTest {
         Exception exception = assertThrows(SimulationException.class, () -> {
             simulationService.simulate(validRequest);
         });
-        assertEquals(arrayLengthMessage, exception.getMessage());
+        assertEquals(invalidArrayLengthMessage, exception.getMessage());
     }
 }
 
