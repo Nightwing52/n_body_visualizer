@@ -2,6 +2,7 @@ package com.nbody.simulator.serviceimpl;
 
 import com.nbody.simulator.dto.*;
 import com.nbody.simulator.service.SimulationService;
+import com.nbody.simulator.validator.SimulationRequestValidator;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ public class SimulationServiceImpl implements SimulationService {
 
     public SimulationOutput simulate(SimulationRequest request) {
         logger.debug("In simulate: printing request {}", request);
+        SimulationRequestValidator.validateSimulationRequest(request);
         float h = request.getSimulationTime()/request.getNumTimesteps(); // timestep
         float G = request.getGravitationalConstant();
         List<Frame> frameList = new ArrayList<>();

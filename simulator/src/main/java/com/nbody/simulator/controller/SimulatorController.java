@@ -19,8 +19,6 @@ public class SimulatorController {
 
     @PostMapping(value = "/v1/simulate")
     public ResponseEntity<SimulationOutput> simulate(@RequestBody SimulationRequest request) {
-        // reflect input for now
-        SimulationRequestValidator.validateSimulationRequest(request);
         return ResponseEntity.ok(simulationService.simulate(request));
     }
 }
